@@ -2,7 +2,7 @@ homebrew-mdbm
 ==============
 
 
-homebrew-mdbm is a Homebrew tap for [Yahoo's MDBM library and
+homebrew-mdbm is a [Homebrew](http://brew.sh/) tap for [Yahoo's MDBM library and
 tools.](http://yahooeng.tumblr.com/post/104861108931/mdbm-high-speed-database)
 
 It installs the libraries used for development and dependencies, as well as the
