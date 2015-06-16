@@ -24,6 +24,13 @@ And install the mdbm package:
 $ brew install eam/mdbm/mdbm
 ```
 
+Uninstall
+-------
+
+```bash
+$ brew untap eam/mdbm
+```
+
 Use
 ------
 
