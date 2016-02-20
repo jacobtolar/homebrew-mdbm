@@ -1,10 +1,8 @@
-require "formula"
-
 class Mdbm < Formula
+  desc "super-fast memory-mapped key/value store."
   homepage "http://yahooeng.tumblr.com/post/104861108931/mdbm-high-speed-database"
-  url "https://github.com/yahoo/mdbm/archive/osx.tar.gz"
-  sha1 "8454f14d98043acfd1fbc0659369ce3b9c1e3a8f"
-  version "4.11.2"
+  url "https://github.com/yahoo/mdbm/archive/v4.12.3.tar.gz"
+  sha256 "1bdd27696980b8234893f2c7bfbd0d1ad5c06ccdb1eb91bcf053db27c61eea26"
 
   depends_on "coreutils"
   depends_on "cppunit"
@@ -12,13 +10,14 @@ class Mdbm < Formula
   depends_on "openssl"
 
   def install
+    ENV.delete "CC"
+    ENV.delete "CXX"
     system "make", "install", "PREFIX=#{prefix}"
-    system "mkdir", "-p", "#{prefix}/lib"
-    system "mv", "#{prefix}/lib64/libmdbm.so.4", "#{prefix}/lib/libmdbm.so.4"
-    system "mv", "#{prefix}/lib64/libmdbm.so", "#{prefix}/lib/libmdbm.so"
   end
 
   test do
-    system %w{mdbm_create /tmp/test.mdbm}
+    mdbm = "/tmp/test-brew.mdbm"
+    system "mdbm_create", mdbm
+    assert File.exist? mdbm
   end
 end
