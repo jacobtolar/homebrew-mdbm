@@ -13,6 +13,9 @@ class Mdbm < Formula
     ENV.delete "CC"
     ENV.delete "CXX"
     system "make", "install", "PREFIX=#{prefix}"
+    %w{libmdbm.so libmdbm.so.4}.each do |lib|
+      system "mv", File.join prefix, "lib", lib
+    end
   end
 
   test do
