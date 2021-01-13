@@ -1,8 +1,8 @@
 class Mdbm < Formula
   desc "super-fast memory-mapped key/value store."
   homepage "http://yahooeng.tumblr.com/post/104861108931/mdbm-high-speed-database"
-  url "https://github.com/yahoo/mdbm/archive/v4.12.3.tar.gz", :fork_ok => true
-  sha256 "1bdd27696980b8234893f2c7bfbd0d1ad5c06ccdb1eb91bcf053db27c61eea26"
+  url "https://github.com/yahoo/mdbm/archive/v4.13.0.tar.gz", :fork_ok => true
+  sha256 "99cec32e02639048f96abf4475eb3f97fc669541560cd030992bab155f0cb7f8"
 
   depends_on "coreutils"
   depends_on "cppunit"
@@ -13,8 +13,6 @@ class Mdbm < Formula
     ENV.delete "CC"
     ENV.delete "CXX"
     system "make", "install", "PREFIX=#{prefix}"
-    system "mv", File.join(prefix, "lib", "libmdbm.so"), File.join(prefix, "lib", "libmdbm.dylib")
-    system "mv", File.join(prefix, "lib", "libmdbm.so.4"), File.join(prefix, "lib", "libmdbm.4.dylib")
   end
 
   test do
